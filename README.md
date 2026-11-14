@@ -4,7 +4,7 @@ KAGE MEDIA için sıfır bağımlılıklı, mobil öncelikli resmi profil sitesi
 
 ## Yerelde çalıştırma
 
-Site statik dosyalardan oluşur. `index.html` dosyasını bir statik web sunucusu üzerinden açın; örneğin:
+Site statik dosyalardan oluşur. Ana sayfa `/`, bağlantılar `/hesaplar/` adresindedir. İki sayfa da `data.json` dosyasını kullanır. Dosyaları bir statik web sunucusu üzerinden açın; örneğin:
 
 ```sh
 npx serve .
@@ -21,6 +21,6 @@ npx serve .
 - Sosyal medya ve diğer bağlantılar: `accounts`
 - Telif ve alt bilgi bağlantısı: `footer`
 
-Hesaplar `accounts` dizisine eklenir. Her öğe `id`, `platform`, `url` ve isteğe bağlı `username`, `description`, `icon`, `enabled`, `order` ve `verified` alanlarını alabilir. Yalnızca `enabled: true` olan ve geçerli bir `http`/`https` adresi içeren bağlantılar gösterilir. `icon` için `instagram`, `tiktok`, `youtube`, `discord`, `x`, `telegram`, `website` veya `link` kullanın.
+Hesaplar `accounts` dizisine eklenir. Her öğe `id`, `platform`, `url` ve isteğe bağlı `username`, `description`, `icon`, `enabled`, `order` ve `verified` alanlarını alabilir. Yalnızca `enabled: true` olan ve geçerli bir `http`/`https` adresi içeren bağlantılar gösterilir. `icon` için `instagram`, `tiktok`, `youtube`, `discord`, `x`, `telegram`, `website` veya `link` kullanın. Mevcut Instagram hesapları bu dizidedir; `platform` alanı kart başlığını, `username` alanı alt etiketini belirler.
 
 JSON değişiklikleri açık sayfaya en geç beş saniye içinde yansır. Profil fotoğrafı boş ya da yüklenemezse harfli yedek avatar gösterilir. Hesap listesi boşsa bağlantı uydurmak yerine boş durum mesajı gösterilir.

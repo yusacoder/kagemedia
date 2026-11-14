@@ -21,11 +21,10 @@
     <div class="shade" aria-hidden="true"></div>
     <div class="page-shell">
       <header class="topbar">
-        <a class="wordmark" href="#home" aria-label="Ana sayfa">
+        <a class="wordmark home-route" href="./" aria-label="Ana sayfa">
           <span class="wordmark-symbol"></span>
           <span class="wordmark-caption"></span>
         </a>
-        <span class="topbar-index" aria-hidden="true"></span>
       </header>
 
       <main id="main-content" tabindex="-1">
@@ -39,10 +38,10 @@
             <p class="eyebrow profile-username"></p>
             <h1 id="profile-name" class="profile-name"></h1>
             <p class="profile-description"></p>
-            <button class="discover-link" type="button" data-go="accounts">
+            <a class="discover-link accounts-route" href="hesaplar/">
               <span class="discover-copy"></span>
               <span class="arrow-icon" aria-hidden="true"></span>
-            </button>
+            </a>
           </div>
         </section>
 
@@ -59,19 +58,22 @@
 
       <footer class="site-footer">
         <span class="copyright"></span>
-        <a class="powered-by" target="_blank" rel="noreferrer"></a>
+        <span class="powered-by-group">
+          <span class="powered-label"></span>
+          <a class="powered-by" target="_blank" rel="noreferrer"></a>
+        </span>
       </footer>
     </div>
 
     <nav class="bottom-nav" aria-label="Ana gezinme">
-      <button class="nav-item is-selected" type="button" data-go="home" aria-current="page">
+      <a class="nav-item is-selected home-route" href="./" aria-current="page">
         <span class="nav-icon home-icon" aria-hidden="true"></span>
         <span class="nav-label nav-home"></span>
-      </button>
-      <button class="nav-item" type="button" data-go="accounts">
+      </a>
+      <a class="nav-item accounts-route" href="hesaplar/">
         <span class="nav-icon accounts-icon" aria-hidden="true"></span>
         <span class="nav-label nav-accounts"></span>
-      </button>
+      </a>
     </nav>
     <noscript>Bu sayfanın görüntülenmesi için JavaScript etkin olmalıdır.</noscript>
     <script type="module" src="app.js"></script>

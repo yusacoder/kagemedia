@@ -1,12 +1,12 @@
 const defaults = {
   site: { name: "KAGE MEDIA", title: "KAGE MEDIA | Resmi Profil", description: "KAGE MEDIA resmi profil ve bağlantıları.", year: new Date().getFullYear(), locale: "tr" },
-  branding: { logo: "影", logoSubtitle: "KAGE MEDIA", favicon: "/assets/favicon.svg" },
+  branding: { logo: "影", logoSubtitle: "KAGE MEDIA", favicon: "assets/favicon.svg" },
   profile: { name: "KAGE MEDIA", username: "", avatar: "", avatarFallback: "K", verified: false, description: "" },
   background: { image: "", blur: 0, darkness: 70, saturation: 0, zoom: 1, positionX: 50, positionY: 50, fixed: true },
   theme: { background: "#080808", surface: "#111111", text: "#FFFFFF", muted: "#A0A0A0", accent: "#D5C6A0", border: "rgba(255,255,255,.12)" },
   navigation: { home: "Ana Sayfa", accounts: "Hesaplar", accountsEyebrow: "BAĞLANTILAR", accountsTitle: "Bizi takip edin", accountsDescription: "KAGE MEDIA dünyasına ait tüm bağlantılar tek bir yerde." },
   home: { discoverText: "Tüm bağlantıları keşfetmek için Hesaplar sayfasını ziyaret edin.", discoverLabel: "Hesapları görüntüle" },
-  accounts: [], emptyAccountsText: "Bağlantılar yakında burada olacak.", footer: { copyright: "© {year} KAGE MEDIA. Tüm hakları saklıdır.", poweredBy: "", poweredByUrl: "" }
+  accounts: [], emptyAccountsText: "Bağlantılar yakında burada olacak.", footer: { copyright: "© {year} KAGE MEDIA. Tüm hakları saklıdır.", poweredBy: "Powered by", poweredByName: "www.eternalproduction.net", poweredByUrl: "https://www.eternalproduction.net" }
 };
 
 const merge = (base, value) => {
@@ -71,7 +71,7 @@ function renderAccounts(data) {
 
 async function init() {
   let raw;
-  try { const response = await fetch("data.json", { cache: "no-store" }); if (!response.ok) throw new Error("data.json unavailable"); raw = await response.json(); }
+  try { const response = await fetch(new URL("data.json", import.meta.url), { cache: "no-store" }); if (!response.ok) throw new Error("data.json unavailable"); raw = await response.json(); }
   catch (error) { console.error("KAGE MEDIA settings could not be loaded; using safe defaults.", error); raw = {}; }
   const data = merge(defaults, raw);
   document.documentElement.lang = data.site.locale || "tr";
@@ -80,7 +80,8 @@ async function init() {
   document.querySelector('meta[property="og:title"]').content = data.site.title;
   document.querySelector('meta[property="og:description"]').content = data.site.description;
   document.querySelector('meta[property="og:image"]').content = safeUrl(data.profile.avatar) || safeUrl(data.background.image);
-  document.querySelector('link[rel="icon"]').href = safeUrl(data.branding.favicon) || "assets/favicon.svg";
+  const faviconUrl = new URL(data.branding.favicon || "assets/favicon.svg", import.meta.url).href;
+  document.querySelector('link[rel="icon"]').href = safeUrl(faviconUrl) || new URL("assets/favicon.svg", import.meta.url).href;
 
   for (const [key, value] of Object.entries(data.theme)) document.documentElement.style.setProperty(`--${key}`, value);
   const bg = data.background;
@@ -100,7 +101,6 @@ async function init() {
   setText(".profile-name", data.profile.name);
   setText(".profile-description", data.profile.description);
   setText(".discover-copy", data.home.discoverText);
-  document.querySelector(".discover-link").setAttribute("aria-label", data.home.discoverLabel);
   document.querySelector(".verified-mark").hidden = !data.profile.verified;
   const avatar = document.querySelector(".avatar");
   document.querySelector(".avatar-fallback").textContent = data.profile.avatarFallback || data.profile.name?.slice(0, 1) || "K";
@@ -116,13 +116,23 @@ async function init() {
   setText(".accounts-kicker", data.navigation.accountsEyebrow);
   setText(".accounts-title", data.navigation.accountsTitle);
   setText(".accounts-description", data.navigation.accountsDescription);
-  const topbarIndex = document.querySelector(".topbar-index"); topbarIndex.textContent = data.site.name;
+  const homeUrl = new URL("./", import.meta.url).href;
+  const accountsUrl = new URL("hesaplar/", import.meta.url).href;
+  document.querySelector(".home-route").href = homeUrl;
+  document.querySelectorAll(".accounts-route").forEach((link) => { link.href = accountsUrl; });
+  document.querySelector(".wordmark-symbol").closest("a").setAttribute("aria-label", data.navigation.home);
+  document.querySelector(".discover-link").setAttribute("aria-label", data.home.discoverLabel);
   const year = String(data.site.year || new Date().getFullYear());
   setText(".copyright", String(data.footer.copyright).replaceAll("{year}", year));
-  const poweredBy = document.querySelector(".powered-by"); poweredBy.textContent = data.footer.poweredBy;
-  poweredBy.href = safeUrl(data.footer.poweredByUrl) || "#";
-  poweredBy.hidden = !data.footer.poweredBy;
+  setText(".powered-label", data.footer.poweredBy);
+  const poweredBy = document.querySelector(".powered-by"); poweredBy.textContent = data.footer.poweredByName;
+  const poweredByUrl = safeUrl(data.footer.poweredByUrl);
+  if (poweredByUrl) poweredBy.href = poweredByUrl; else poweredBy.removeAttribute("href");
+  poweredBy.hidden = !data.footer.poweredByName;
+  document.querySelector(".powered-label").hidden = !data.footer.poweredBy;
   renderAccounts(data);
+  const accountsPath = new URL("hesaplar/", import.meta.url).pathname.replace(/\/+$/, "");
+  showView(location.pathname.replace(/\/+$/, "") === accountsPath ? "accounts" : "home");
 }
 
 function showView(name) {
@@ -132,18 +142,11 @@ function showView(name) {
     view.hidden = !active;
     view.classList.toggle("is-active", active);
   });
-  document.querySelectorAll(".nav-item").forEach((button) => {
-    const active = button.dataset.go === safeName;
-    button.classList.toggle("is-selected", active);
-    if (active) button.setAttribute("aria-current", "page"); else button.removeAttribute("aria-current");
+  document.querySelectorAll(".nav-item").forEach((link) => {
+    const active = link.classList.contains(safeName === "accounts" ? "accounts-route" : "home-route");
+    link.classList.toggle("is-selected", active);
+    if (active) link.setAttribute("aria-current", "page"); else link.removeAttribute("aria-current");
   });
-  history.replaceState(null, "", safeName === "accounts" ? "#accounts" : "#home");
-  window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
 }
-document.addEventListener("click", (event) => {
-  const trigger = event.target.closest("[data-go]");
-  if (trigger) showView(trigger.dataset.go);
-});
-window.addEventListener("hashchange", () => showView(location.hash === "#accounts" ? "accounts" : "home"));
-init().then(() => showView(location.hash === "#accounts" ? "accounts" : "home"));
+init();
 window.setInterval(() => init(), 5000);

@@ -3,17 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script>
+      (() => {
+        const rootPath = location.pathname.replace(/hesaplar\/?$/, "");
+        const base = document.createElement("base");
+        base.href = `${location.origin}${rootPath.endsWith("/") ? rootPath : `${rootPath}/`}`;
+        document.head.append(base);
+      })();
+    </script>
     <meta name="theme-color" content="#080808" />
     <meta name="description" content="KAGE MEDIA resmi profil ve bağlantıları." />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="KAGE MEDIA" />
     <meta property="og:description" content="KAGE MEDIA resmi profil ve bağlantıları." />
     <meta property="og:image" content="" />
-    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
     <title>KAGE MEDIA</title>
   </head>
   <body>
@@ -21,7 +29,7 @@
     <div class="shade" aria-hidden="true"></div>
     <div class="page-shell">
       <header class="topbar">
-        <a class="wordmark home-route" href="../" aria-label="Ana sayfa">
+        <a class="wordmark home-route" href="./" aria-label="Ana sayfa">
           <span class="wordmark-symbol"></span>
           <span class="wordmark-caption"></span>
         </a>
@@ -38,7 +46,7 @@
             <p class="eyebrow profile-username"></p>
             <h1 id="profile-name" class="profile-name"></h1>
             <p class="profile-description"></p>
-            <a class="discover-link accounts-route" href="./">
+            <a class="discover-link accounts-route" href="hesaplar/">
               <span class="discover-copy"></span>
               <span class="arrow-icon" aria-hidden="true"></span>
             </a>
@@ -66,16 +74,16 @@
     </div>
 
     <nav class="bottom-nav" aria-label="Ana gezinme">
-      <a class="nav-item home-route" href="../">
+      <a class="nav-item home-route" href="./">
         <span class="nav-icon home-icon" aria-hidden="true"></span>
         <span class="nav-label nav-home"></span>
       </a>
-      <a class="nav-item is-selected accounts-route" href="./" aria-current="page">
+      <a class="nav-item is-selected accounts-route" href="hesaplar/" aria-current="page">
         <span class="nav-icon accounts-icon" aria-hidden="true"></span>
         <span class="nav-label nav-accounts"></span>
       </a>
     </nav>
     <noscript>Bu sayfanın görüntülenmesi için JavaScript etkin olmalıdır.</noscript>
-    <script type="module" src="../app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

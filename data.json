@@ -1,0 +1,58 @@
+{
+  "site": {
+    "name": "KAGE MEDIA",
+    "title": "KAGE MEDIA | Resmi Profil",
+    "description": "KAGE MEDIA resmi profil ve bağlantıları.",
+    "year": "2026",
+    "locale": "tr"
+  },
+  "branding": {
+    "logo": "影",
+    "logoSubtitle": "KAGE MEDIA",
+    "favicon": "assets/favicon.svg"
+  },
+  "profile": {
+    "name": "KAGE MEDIA",
+    "username": "@kagemedia",
+    "avatar": "",
+    "avatarFallback": "K",
+    "verified": true,
+    "description": "Dijital dünyada iz bırakan fikirler ve hikâyeler."
+  },
+  "background": {
+    "image": "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2400&q=85",
+    "blur": 5,
+    "darkness": 64,
+    "saturation": 0,
+    "zoom": 1.08,
+    "positionX": 50,
+    "positionY": 50,
+    "fixed": true
+  },
+  "theme": {
+    "background": "#080808",
+    "surface": "#111111",
+    "text": "#FFFFFF",
+    "muted": "#A0A0A0",
+    "accent": "#D5C6A0",
+    "border": "rgba(255,255,255,0.12)"
+  },
+  "navigation": {
+    "home": "Ana Sayfa",
+    "accounts": "Hesaplar",
+    "accountsEyebrow": "BAĞLANTILAR",
+    "accountsTitle": "Bizi takip edin",
+    "accountsDescription": "KAGE MEDIA dünyasına ait tüm bağlantılar tek bir yerde."
+  },
+  "home": {
+    "discoverText": "Tüm sosyal medya hesaplarımızı ve bağlantılarımızı keşfetmek için Hesaplar sayfasını ziyaret edin.",
+    "discoverLabel": "Hesapları görüntüle"
+  },
+  "accounts": [],
+  "emptyAccountsText": "Bağlantılar yakında burada olacak.",
+  "footer": {
+    "copyright": "© {year} KAGE MEDIA. Tüm hakları saklıdır.",
+    "poweredBy": "Eternal Production",
+    "poweredByUrl": "https://www.eternalproduction.net"
+  }
+}

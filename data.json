@@ -1,0 +1,110 @@
+{
+  "site": {
+    "name": "KAGE MEDIA",
+    "title": "KAGE MEDIA | Resmi Profil",
+    "description": "KAGE MEDIA resmi profil ve bağlantıları.",
+    "year": "2026",
+    "locale": "tr"
+  },
+  "branding": {
+    "logo": "影",
+    "logoSubtitle": "KAGE MEDIA",
+    "favicon": "assets/favicon.svg"
+  },
+  "profile": {
+    "name": "KAGE MEDIA",
+    "username": "@kagemedia",
+    "avatar": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-19/818062716_18051603533739350_1506923019515056522_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=103&_nc_map=urlgen_bucketless&ig_cache_key=GHylwjBWNUF41iFAAIrRDZKAqukUbmNDAQAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=QtqOiYsthKoQ7kNvwEFxnYv&_nc_oc=AdoXQepO6bR2t4ovAm0wwKPpE75LUJyPC5LGjrayWgrL-5uXqsfodALNxfvSBcDHxw-gcWCCMOF3w9kAWJZ2XNEr&_nc_zt=24&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_gid=azYt3WkGPWgH4hwLRtCXtg&_nc_ss=79689&_nc_ct=RQosPBUCFQIAAAA&oh=00_AQQqZhmZpcrZ2onKsdJArdFwij6HzoO-iLlZ5PA3K07DjQ&oe=6AFE94A0",
+    "avatarFallback": "K",
+    "verified": true,
+    "description": "Dijital dünyada iz bırakan fikirler ve hikâyeler."
+  },
+  "background": {
+    "image": "https://i.pinimg.com/736x/94/bd/3f/94bd3fab976de47c3c349d6550cde772.jpg",
+    "blur": 5,
+    "darkness": 64,
+    "saturation": 0,
+    "zoom": 1.08,
+    "positionX": 50,
+    "positionY": 50,
+    "fixed": true
+  },
+  "theme": {
+    "background": "#080808",
+    "surface": "#111111",
+    "text": "#FFFFFF",
+    "muted": "#A0A0A0",
+    "accent": "#D5C6A0",
+    "border": "rgba(255,255,255,0.12)"
+  },
+  "navigation": {
+    "home": "Ana Sayfa",
+    "accounts": "Hesaplar",
+    "accountsEyebrow": "BAĞLANTILAR",
+    "accountsTitle": "Bizi takip edin",
+    "accountsDescription": "KAGE MEDIA dünyasına ait tüm bağlantılar tek bir yerde."
+  },
+  "home": {
+    "discoverText": "Tüm sosyal medya hesaplarımızı ve bağlantılarımızı keşfetmek için Hesaplar sayfasını ziyaret edin.",
+    "discoverLabel": "Hesapları görüntüle"
+  },
+  "accounts": [
+    {
+      "id": "animekagetr",
+      "platform": "Instagram",
+      "username": "@animekagetr",
+      "description": "",
+      "url": "https://www.instagram.com/animekagetr/",
+      "icon": "instagram",
+      "enabled": true,
+      "order": 1
+    },
+    {
+      "id": "narutotturkiyetr",
+      "platform": "Instagram",
+      "username": "@narutotturkiyetr",
+      "description": "",
+      "url": "https://www.instagram.com/narutotturkiyetr/",
+      "icon": "instagram",
+      "enabled": true,
+      "order": 2
+    },
+    {
+      "id": "bleachtturkiyetr",
+      "platform": "Instagram",
+      "username": "@bleachtturkiyetr",
+      "description": "",
+      "url": "https://www.instagram.com/bleachtturkiyetr/",
+      "icon": "instagram",
+      "enabled": true,
+      "order": 3
+    },
+    {
+      "id": "xwaizzamp",
+      "platform": "Instagram",
+      "username": "@xwaizz.amp",
+      "description": "",
+      "url": "https://www.instagram.com/xwaizz.amp/",
+      "icon": "instagram",
+      "enabled": true,
+      "order": 4
+    },
+    {
+      "id": "animedenpostlar",
+      "platform": "Instagram",
+      "username": "@animedenpostlar",
+      "description": "",
+      "url": "https://www.instagram.com/animedenpostlar/",
+      "icon": "instagram",
+      "enabled": true,
+      "order": 5
+    }
+  ],
+  "emptyAccountsText": "Bağlantılar yakında burada olacak.",
+  "footer": {
+    "copyright": "© {year} KAGE MEDIA. Tüm hakları saklıdır.",
+    "poweredBy": "Powered by",
+    "poweredByName": "www.eternalproduction.net",
+    "poweredByUrl": "https://www.eternalproduction.net"
+  }
+}

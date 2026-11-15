@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#080808" />
+    <meta name="description" content="KAGE MEDIA resmi profil ve bağlantıları." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="KAGE MEDIA" />
+    <meta property="og:description" content="KAGE MEDIA resmi profil ve bağlantıları." />
+    <meta property="og:image" content="" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>KAGE MEDIA</title>
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true"></div>
+    <div class="shade" aria-hidden="true"></div>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="wordmark home-route" href="../" aria-label="Ana sayfa">
+          <span class="wordmark-symbol"></span>
+          <span class="wordmark-caption"></span>
+        </a>
+      </header>
+
+      <main id="main-content" tabindex="-1">
+        <section class="view" id="home-view" aria-labelledby="profile-name" data-view="home" hidden>
+          <div class="hero">
+            <div class="avatar-wrap">
+              <div class="avatar-fallback" aria-hidden="true"></div>
+              <img class="avatar" alt="" />
+              <span class="verified-mark" aria-label="Doğrulanmış profil" hidden></span>
+            </div>
+            <p class="eyebrow profile-username"></p>
+            <h1 id="profile-name" class="profile-name"></h1>
+            <p class="profile-description"></p>
+            <a class="discover-link accounts-route" href="./">
+              <span class="discover-copy"></span>
+              <span class="arrow-icon" aria-hidden="true"></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="view is-active" id="accounts-view" aria-labelledby="accounts-title" data-view="accounts">
+          <div class="accounts-heading">
+            <p class="eyebrow accounts-kicker"></p>
+            <h1 id="accounts-title" class="accounts-title"></h1>
+            <p class="accounts-description"></p>
+          </div>
+          <div class="account-list" aria-live="polite"></div>
+          <p class="empty-state" hidden></p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span class="copyright"></span>
+        <span class="powered-by-group">
+          <span class="powered-label"></span>
+          <a class="powered-by" target="_blank" rel="noreferrer"></a>
+        </span>
+      </footer>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Ana gezinme">
+      <a class="nav-item home-route" href="../">
+        <span class="nav-icon home-icon" aria-hidden="true"></span>
+        <span class="nav-label nav-home"></span>
+      </a>
+      <a class="nav-item is-selected accounts-route" href="./" aria-current="page">
+        <span class="nav-icon accounts-icon" aria-hidden="true"></span>
+        <span class="nav-label nav-accounts"></span>
+      </a>
+    </nav>
+    <noscript>Bu sayfanın görüntülenmesi için JavaScript etkin olmalıdır.</noscript>
+    <script type="module" src="../app.js"></script>
+  </body>
+</html>

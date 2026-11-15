@@ -14,10 +14,10 @@
   "profile": {
     "name": "KAGE MEDIA",
     "username": "@kagemedia",
-    "avatar": "kagepp.jpg",
+    "avatar": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-19/818062716_18051603533739350_1506923019515056522_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=103&_nc_map=urlgen_bucketless&ig_cache_key=GHylwjBWNUF41iFAAIrRDZKAqukUbmNDAQAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=QtqOiYsthKoQ7kNvwEFxnYv&_nc_oc=AdoXQepO6bR2t4ovAm0wwKPpE75LUJyPC5LGjrayWgrL-5uXqsfodALNxfvSBcDHxw-gcWCCMOF3w9kAWJZ2XNEr&_nc_zt=24&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_gid=azYt3WkGPWgH4hwLRtCXtg&_nc_ss=79689&_nc_ct=RQosPBUCFQIAAAA&oh=00_AQQqZhmZpcrZ2onKsdJArdFwij6HzoO-iLlZ5PA3K07DjQ&oe=6AFE94A0",
     "avatarFallback": "K",
     "verified": true,
-    "description": "Anime içerikleri • Sosyal medya projeleri • Dijital deneyimler • Topluluklar • Etkinlikler. Farklı dünyalar, farklı içerikler, tek çatı altında. We create more than content."
+    "description": "Dijital dünyada iz bırakan fikirler ve hikâyeler."
   },
   "background": {
     "image": "https://i.pinimg.com/736x/94/bd/3f/94bd3fab976de47c3c349d6550cde772.jpg",
@@ -98,6 +98,16 @@
       "icon": "instagram",
       "enabled": true,
       "order": 5
+    },
+    {
+      "id": "whatsapp",
+      "platform": "WhatsApp",
+      "username": "animekage",
+      "description": "",
+      "url": "https://wa.me/animekage",
+      "icon": "whatsapp",
+      "enabled": true,
+      "order": 6
     }
   ],
   "emptyAccountsText": "Bağlantılar yakında burada olacak.",

@@ -19,7 +19,7 @@ const merge = (base, value) => {
 };
 const setText = (selector, value) => { const node = document.querySelector(selector); if (node) node.textContent = value ?? ""; };
 const clamp = (value, min, max, fallback) => Number.isFinite(Number(value)) ? Math.min(max, Math.max(min, Number(value))) : fallback;
-const safeUrl = (value) => { if (typeof value !== "string" || !value.trim()) return ""; try { const url = new URL(value, location.href); return ["http:", "https:"].includes(url.protocol) ? url.href : ""; } catch { return ""; } };
+const safeUrl = (value) => { if (typeof value !== "string" || !value.trim()) return ""; try { const url = new URL(value, import.meta.url); return ["http:", "https:"].includes(url.protocol) ? url.href : ""; } catch { return ""; } };
 
 const iconShapes = {
   instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".7" fill="currentColor" stroke="none"/>',
@@ -71,7 +71,10 @@ function renderAccounts(data) {
     const subtitle = document.createElement("span"); subtitle.className = "account-subtitle"; subtitle.textContent = username || String(account.description || "").trim();
     if (!subtitle.textContent) subtitle.hidden = true;
     details.append(title, subtitle);
-    link.append(icon, details, svgIcon("arrow", "account-arrow"));
+    const arrow = document.createElement("span");
+    arrow.className = "account-arrow";
+    arrow.innerHTML = svgIcon("arrow");
+    link.append(icon, details, arrow);
     list.append(link);
   }
 }
@@ -125,7 +128,7 @@ async function init() {
   setText(".accounts-description", data.navigation.accountsDescription);
   const homeUrl = new URL("./", import.meta.url).href;
   const accountsUrl = new URL("hesaplar/", import.meta.url).href;
-  document.querySelector(".home-route").href = homeUrl;
+  document.querySelectorAll(".home-route").forEach((link) => { link.href = homeUrl; });
   document.querySelectorAll(".accounts-route").forEach((link) => { link.href = accountsUrl; });
   document.querySelector(".wordmark-symbol").closest("a").setAttribute("aria-label", data.navigation.home);
   document.querySelector(".discover-link").setAttribute("aria-label", data.home.discoverLabel);
@@ -138,8 +141,8 @@ async function init() {
   poweredBy.hidden = !data.footer.poweredByName;
   document.querySelector(".powered-label").hidden = !data.footer.poweredBy;
   renderAccounts(data);
-  const accountsPath = new URL("hesaplar/", import.meta.url).pathname.replace(/\/+$/, "");
-  showView(location.pathname.replace(/\/+$/, "") === accountsPath ? "accounts" : "home");
+  // Hangi sayfanın açık olduğunu adrese değil, HTML'de gizli olmayan bölüme göre belirle.
+  showView(document.querySelector("#accounts-view[hidden]") ? "home" : "accounts");
 }
 
 function showView(name) {

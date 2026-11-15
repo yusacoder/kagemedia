@@ -19,7 +19,7 @@ const merge = (base, value) => {
 };
 const setText = (selector, value) => { const node = document.querySelector(selector); if (node) node.textContent = value ?? ""; };
 const clamp = (value, min, max, fallback) => Number.isFinite(Number(value)) ? Math.min(max, Math.max(min, Number(value))) : fallback;
-const safeUrl = (value) => { if (typeof value !== "string" || !value.trim()) return ""; try { const url = new URL(value, import.meta.url); return ["http:", "https:"].includes(url.protocol) ? url.href : ""; } catch { return ""; } };
+const safeUrl = (value) => { if (typeof value !== "string" || !value.trim()) return ""; try { const url = new URL(value, location.href); return ["http:", "https:"].includes(url.protocol) ? url.href : ""; } catch { return ""; } };
 
 const iconShapes = {
   instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".7" fill="currentColor" stroke="none"/>',
@@ -28,6 +28,7 @@ const iconShapes = {
   discord: '<path d="M7 7.5a14 14 0 0 1 10 0l1.5 9a13 13 0 0 1-3.7 1.7l-.9-1.5a10 10 0 0 0 2.1-.9M7.9 15.8a10 10 0 0 0 2.1.9l-.9 1.5A13 13 0 0 1 5.4 16.5l1.5-9"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/>',
   x: '<path d="M4 4h4.6L20 20h-4.6L4 4Zm0 16 6-7m4-5 6-4"/>',
   telegram: '<path d="m21 4-4 16-5-5-3 3 .5-5.5L21 4ZM9.5 13.5 21 4"/>',
+  whatsapp: '<path d="M20.2 11.7a8.2 8.2 0 0 1-12.1 7.2L4 20l1.1-4.1a8.2 8.2 0 1 1 15.1-4.2Z"/><path d="M8.6 8.5c.2-.5.5-.6.8-.6h.5c.2 0 .4.1.5.4l.8 1.7c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4-.1.6.5 1 1.3 1.8 2.3 2.3.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.5 0 .4-.2 1.1-.7 1.5-.5.4-1.1.7-2 .4-1-.3-2.2-.8-3.5-2-1.3-1.2-2-2.5-2.3-3.5-.3-.9 0-1.5.4-2Z"/>',
   website: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
   link: '<path d="M10 13a5 5 0 0 0 7.1 0l3-3A5 5 0 0 0 13 2.9l-1.7 1.7M14 11a5 5 0 0 0-7.1 0l-3 3A5 5 0 0 0 11 21.1l1.7-1.7"/>',
   home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V10Z"/>',
@@ -71,10 +72,7 @@ function renderAccounts(data) {
     const subtitle = document.createElement("span"); subtitle.className = "account-subtitle"; subtitle.textContent = username || String(account.description || "").trim();
     if (!subtitle.textContent) subtitle.hidden = true;
     details.append(title, subtitle);
-    const arrow = document.createElement("span");
-    arrow.className = "account-arrow";
-    arrow.innerHTML = svgIcon("arrow");
-    link.append(icon, details, arrow);
+    link.append(icon, details, svgIcon("arrow", "account-arrow"));
     list.append(link);
   }
 }
@@ -128,7 +126,7 @@ async function init() {
   setText(".accounts-description", data.navigation.accountsDescription);
   const homeUrl = new URL("./", import.meta.url).href;
   const accountsUrl = new URL("hesaplar/", import.meta.url).href;
-  document.querySelectorAll(".home-route").forEach((link) => { link.href = homeUrl; });
+  document.querySelector(".home-route").href = homeUrl;
   document.querySelectorAll(".accounts-route").forEach((link) => { link.href = accountsUrl; });
   document.querySelector(".wordmark-symbol").closest("a").setAttribute("aria-label", data.navigation.home);
   document.querySelector(".discover-link").setAttribute("aria-label", data.home.discoverLabel);
@@ -141,8 +139,8 @@ async function init() {
   poweredBy.hidden = !data.footer.poweredByName;
   document.querySelector(".powered-label").hidden = !data.footer.poweredBy;
   renderAccounts(data);
-  // Hangi sayfanın açık olduğunu adrese değil, HTML'de gizli olmayan bölüme göre belirle.
-  showView(document.querySelector("#accounts-view[hidden]") ? "home" : "accounts");
+  const accountsPath = new URL("hesaplar/", import.meta.url).pathname.replace(/\/+$/, "");
+  showView(location.pathname.replace(/\/+$/, "") === accountsPath ? "accounts" : "home");
 }
 
 function showView(name) {
